@@ -45,24 +45,28 @@
     }
   }
 
-  function isSpace(char) {
+  /**
+   * Returns undefined if the character is a space, otherwise returns the character
+   * @param char
+   */
+  function spaceOrChar(char) {
     return char === space ? undefined : char;
   }
 
   function checkWinner() {
     for (let i = 0; i < 3; ++i) {
       if (moves[i][0] === moves[i][1] && moves[i][1] === moves[i][2]) {
-        return isSpace(moves[i][0]);
+        return spaceOrChar(moves[i][0]);
       }
       if (moves[0][i] === moves[1][i] && moves[1][i] === moves[2][i]) {
-        return isSpace(moves[0][i]);
+        return spaceOrChar(moves[0][i]);
       }
     }
     if (moves[0][0] === moves[1][1] && moves[1][1] === moves[2][2]) {
-      return isSpace(moves[1][1]);
+      return spaceOrChar(moves[1][1]);
     }
     if (moves[0][2] === moves[1][1] && moves[1][1] === moves[2][0]) {
-      return isSpace(moves[1][1]);
+      return spaceOrChar(moves[1][1]);
     }
     return undefined;
   }
